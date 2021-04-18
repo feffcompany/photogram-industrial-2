@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :likes
   has_many :comments
-  has_many :photos       
+  has_many :photos
+  has_many :following, :through => :follow_requests
+  has_many :followers, :through => :follow_requests    
 end
