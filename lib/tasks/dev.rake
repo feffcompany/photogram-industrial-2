@@ -26,6 +26,12 @@ task sample_data: :environment do
       password: "password",
       username: username.downcase,
       name: "#{person[:first_name]} #{person[:last_name]}",
+      bio: Faker::Lorem.paragraph(
+        sentence_count: 2,
+        supplemental: true,
+        random_sentences_to_add: 4
+      ),
+      website: Faker::Internet.url,
       private: [true, false].sample,
       avatar_image: "https://robohash.org/#{username}"
     )

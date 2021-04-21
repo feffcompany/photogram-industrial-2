@@ -311,6 +311,9 @@ GEM
       tzinfo (>= 1.0.0)
     unicode-display_width (2.0.0)
     uniform_notifier (1.14.2)
+    validate_url (1.0.13)
+      activemodel (>= 3.0.0)
+      public_suffix
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -370,6 +373,7 @@ DEPENDENCIES
   strip_attributes
   turbolinks (~> 5)
   tzinfo-data
+  validate_url
   web-console (>= 4.1.0)
   web_git!
   webdrivers
