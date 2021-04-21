@@ -25,7 +25,7 @@ class FollowRequest < ApplicationRecord
 
   enum status: { pending: "pending", rejected: "rejected", accepted: "accepted" }
 
-  scope: accepted, -> {where(status: "accepted")}
+  scope :accepted, -> {where(status: "accepted")}
   
   
 end
