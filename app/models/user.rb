@@ -63,4 +63,12 @@ class User < ApplicationRecord
   scope :past_week, -> { where(created_at: 1.week.ago...) }
 
   scope :by_likes, -> { order(likes_count: :desc) }
+
+  before_validation :add_default_scheme_to_website
+
+  def add_default_scheme_to_website
+    if website.present? && !website.starts_with?("http")
+      self.website = "http://" + self.website
+    end
+  end
 end
