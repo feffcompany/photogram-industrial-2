@@ -1,34 +1,19 @@
+<div class="row mb-4">
+  <div class="col-md-6 offset-md-3">
+    <%= render "users/user", user: @user %>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <div class="media">
-      <%= image_tag @user.avatar_image, class: "mr-3 rounded-circle", width: 128 %>
-
-      <div class="media-body">
-        <h1 class="mt-0 display-4">
-          <%= @user.username %>
-        </h1>
-
-        <h3>
-          <%= @user.name %>
-        </h3>
-
-        <p>
-          <%= @user.bio %>
-        </p>
-
-        <p>
-          <%= link_to pretty_url(@user.website), @user.website %>
-        </p>
-      </div>
-    </div>
-    <h1>
-      <%= @user.username %>
-    </h1>
-
     <%= render "users/profile_nav", user: @user %>
   </div>
 </div>
 
-<% @user.own_photos.each do |zebra| %>
-  <%= render "photos/photo", giraffe: zebra %>
+<% @user.own_photos.each do |photo| %>
+  <div class="row mb-4">
+    <div class="col-md-6 offset-md-3">
+      <%= render "photos/photo", photo: photo %>
+    </div>
+  </div>
 <% end %>

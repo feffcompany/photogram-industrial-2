@@ -1,0 +1,41 @@
+<div class="media">
+  <%= image_tag user.avatar_image, class: "mr-3 rounded-circle", width: 128 %>
+
+  <div class="media-body">
+    <h1 class="mt-0 mb-3 display-4">
+      <%= user.username %>
+    </h1>
+
+    <div class="row mb-4">
+      <div class="col">
+        <span class="font-weight-bold">
+          <%= user.own_photos.count %>
+        </span> posts
+      </div>
+
+      <div class="col">
+        <span class="font-weight-bold">
+          <%= user.followers.count %>
+        </span> followers
+      </div>
+
+      <div class="col">
+        <span class="font-weight-bold">
+          <%= user.leaders.count %>
+        </span> following
+      </div>
+    </div>
+
+    <h3 class="h5">
+      <%= user.name %>
+    </h3>
+
+    <p>
+      <%= user.bio %>
+    </p>
+
+    <p>
+      <%= link_to only_host_and_path(user.website), user.website %>
+    </p>
+  </div>
+</div>
