@@ -9,6 +9,7 @@ gem 'active_link_to'
 gem "strip_attributes"
 gem "validate_url"
 gem 'devise'
+gem 'faker'
 
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use postgresql as the database for Active Record
@@ -69,7 +70,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'faker'
   gem 'pry-rails'
   gem 'rack-canonical-host'
   gem 'rails_db'
