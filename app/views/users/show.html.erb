@@ -4,30 +4,10 @@
       <%= @user.username %>
     </h1>
 
-    <ul class="nav nav-pills nav-justified">  
-      <li class="nav-item">
-        <%= active_link_to "Posts", user_path(@user.username), class: "nav-link" %>
-      </li>
-
-      <li class="nav-item">
-        <%= active_link_to "Liked", liked_path(@user.username), class: "nav-link" %>
-      </li>
-
-      <li class="nav-item">
-        <%= active_link_to "Feed", feed_path(@user.username), class: "nav-link" %>
-      </li>
-
-      <li class="nav-item">
-        <%= active_link_to "Followers", followers_path(@user.username), class: "nav-link" %>
-      </li>
-
-      <li class="nav-item">
-        <%= active_link_to "Following", following_path(@user.username), class: "nav-link" %>
-      </li>
-    </ul>    
+    <%= render "users/profile_nav", user: @user %>
   </div>
 </div>
 
-<% current_user.own_photos.each do |zebra| %>
+<% @user.own_photos.each do |zebra| %>
   <%= render "photos/photo", giraffe: zebra %>
 <% end %>
