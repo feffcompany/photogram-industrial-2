@@ -14,9 +14,20 @@
       </div>
 
       <div class="col">
-        <span class="font-weight-bold">
-          <%= user.followers.count %>
-        </span> followers
+        <%=
+          link_to "#",
+            data: { 
+              toggle: "modal", 
+              target: "##{dom_id(user)}_followers"
+            } do %>
+
+          <span class="font-weight-bold">
+            <%= user.followers.count %>
+          </span>
+          
+          followers
+
+        <% end %>
       </div>
 
       <div class="col">
@@ -39,3 +50,19 @@
     </p>
   </div>
 </div>
+
+<%=
+  render "users/connected_users_modal.html.erb",
+    user: user,
+    connected_users: user.followers,
+    description: "followers",
+    target: "#{dom_id(user)}_followers"
+%>
+
+<%=
+  render "users/connected_users_modal.html.erb",
+    user: user,
+    connected_users: user.leaders,
+    description: "following",
+    target: "#{dom_id(user)}_following"
+%>
