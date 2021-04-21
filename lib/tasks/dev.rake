@@ -8,7 +8,7 @@ task sample_data: :environment do
   Photo.delete_all
   User.delete_all
 
-  usernames = Array.new { Faker::Name.first_name }
+  usernames = Array.new(10) { Faker::Name.first_name }
 
   usernames << "alice"
   usernames << "bob"
@@ -19,6 +19,7 @@ task sample_data: :environment do
       password: "password",
       username: username.downcase,
       private: [true, false].sample,
+      avatar_image: "https://robohash.org/#{username}"
     )
   end
 

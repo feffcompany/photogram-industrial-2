@@ -22,6 +22,17 @@
       </ul>
 
       <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Resources
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/photos">Photos</a>
+            <a class="dropdown-item" href="/comments">Comments</a>
+            <a class="dropdown-item" href="/follow_requests">Follow requests</a>
+            <a class="dropdown-item" href="/likes">Likes</a>
+          </div>
+        </li>
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Edit #{current_user.username}", edit_user_registration_path, class: "nav-link" %>

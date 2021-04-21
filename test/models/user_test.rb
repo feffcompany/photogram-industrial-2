@@ -3,6 +3,8 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  avatar_image           :string           default("avatar_placeholder.png")
+#  bio                    :string
 #  comments_count         :integer          default(0)
 #  email                  :citext           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -13,6 +15,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  username               :citext
+#  website                :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
