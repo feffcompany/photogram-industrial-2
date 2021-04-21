@@ -6,6 +6,7 @@ ruby '2.7.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 
 gem 'active_link_to'
+gem "strip_attributes"
 
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use postgresql as the database for Active Record

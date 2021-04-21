@@ -8,16 +8,24 @@ task sample_data: :environment do
   Photo.delete_all
   User.delete_all
 
-  usernames = Array.new(10) { Faker::Name.first_name }
+  people = Array.new(10) do
+    {
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+    }
+  end
 
-  usernames << "alice"
-  usernames << "bob"
+  people << { first_name: "Alice", last_name: "Smith" }
+  people << { first_name: "Bob", last_name: "Smith" }
 
-  usernames.each do |username|
+  people.each do |person|
+    username = person.fetch(:first_name).downcase
+
     User.create(
       email: "#{username}@example.com",
       password: "password",
       username: username.downcase,
+      name: "#{person[:first_name]} #{person[:last_name]}",
       private: [true, false].sample,
       avatar_image: "https://robohash.org/#{username}"
     )
