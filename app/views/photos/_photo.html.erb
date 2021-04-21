@@ -1,8 +1,15 @@
 <div class="card">
-  <%= image_tag photo.image, class: "card-img-top" %>
+  <div class="card-body py-2">
+    <h2 class="h5 m-0 p-0 d-flex align-items-center">
+      <%= image_tag photo.owner.avatar_image, class: "rounded-circle mr-2", width: 36 %>
+
+      <%= photo.owner.username %>
+    </h2>
+  </div>
+
+  <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/FCAB_EMD_GT22CU-3_San_Pedro_-_Ascotan.jpg/640px-FCAB_EMD_GT22CU-3_San_Pedro_-_Ascotan.jpg", class: "img-fluid" %>
   
   <div class="card-body">
-    <h5 class="card-title"><%= photo.owner.username %></h5>
     <p class="card-text"><%= photo.caption %></p>
   </div>
 
@@ -10,7 +17,7 @@
     <% photo.comments.each do |comment| %>
       <li class="list-group-item">
         <div class="media">
-          <img src="..." class="mr-3" alt="...">
+          <%= image_tag comment.author.avatar_image, class: "rounded-circle mr-2", width: 36 %>
           <div class="media-body">
             <h5 class="mt-0"><%= comment.author.username %></h5>
             <p><%= comment.body %></p>
