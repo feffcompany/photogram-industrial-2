@@ -22,7 +22,7 @@
             } do %>
 
           <span class="font-weight-bold">
-            <%= user.followers.count %>
+            <%= user.followers.size %>
           </span>
           
           followers
@@ -31,9 +31,20 @@
       </div>
 
       <div class="col">
-        <span class="font-weight-bold">
-          <%= user.leaders.count %>
-        </span> following
+        <%=
+          link_to "#",
+            data: { 
+              toggle: "modal", 
+              target: "##{dom_id(user)}_following"
+            } do %>
+
+          <span class="font-weight-bold">
+            <%= user.leaders.size %>
+          </span>
+          
+          following
+
+        <% end %>
       </div>
     </div>
 
