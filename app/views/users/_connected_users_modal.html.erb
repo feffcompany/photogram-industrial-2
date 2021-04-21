@@ -3,7 +3,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="backdropLabel">
-          <%= user.username %>'s <%= description %> (<%= connected_users.size %>)
+          <%= user.username %>'s <%= description %>
+          
+          <span class="badge badge-pill badge-secondary">
+            <%= connected_users.size %>
+          </span>
         </h5>
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
