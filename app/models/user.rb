@@ -67,7 +67,10 @@ class User < ApplicationRecord
   before_validation :add_default_scheme_to_website
 
   def add_default_scheme_to_website
-    if website.present? && !website.starts_with?("http")
+    if website.present? &&
+      !website.starts_with?("http://") &&
+      !website.starts_with?("https://")
+      
       self.website = "http://" + self.website
     end
   end
