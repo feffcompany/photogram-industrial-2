@@ -56,7 +56,13 @@ class User < ApplicationRecord
 
   has_many :discover, through: :leaders, source: :liked_photos
 
-  validates :username, presence: true, uniqueness: true
+  validates :username,
+    presence: true,
+    uniqueness: true,
+    format: { 
+      with: /\A[\w_\.]+\z/i,
+      message: "can only contain letters, numbers, periods, and underscores"
+    }
 
   validates :website, url: { allow_blank: true }
 
