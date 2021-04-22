@@ -1,0 +1,16 @@
+<h1>
+  <%= @user.username %>
+</h1>  
+
+<h2>Own photos</h2>
+
+
+<ul>
+
+<% current_user.own_photos.each do |photo| %>
+  <li>
+    <%= photo.caption %>
+  </li>
+
+  <% end %>
+</ul>
