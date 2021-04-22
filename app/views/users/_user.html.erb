@@ -8,12 +8,6 @@
 
     <div class="row mb-4">
       <div class="col">
-        <span class="font-weight-bold">
-          <%= user.own_photos.count %>
-        </span> posts
-      </div>
-
-      <div class="col">
         <%=
           link_to "#",
             data: { 
@@ -46,6 +40,62 @@
 
         <% end %>
       </div>
+
+      <div class="col">
+        <%=
+          link_to "#",
+            data: { 
+              toggle: "modal", 
+              target: "##{dom_id(user)}_pending"
+            } do %>
+
+          <span class="font-weight-bold">
+            <%= user.pending.size %>
+          </span>
+          
+          pending
+
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <% follow_request = current_user.received_follow_requests.find_by(sender: @user) %>
+        <% if follow_request %>
+          <% if follow_request.pending? %>
+            <% follow_request.status = "accepted" %>
+
+            <%= form_with(model: follow_request) do |form| %>
+              <%= form.hidden_field :status %>
+
+              <%= form.submit "Accept follow request", class: "btn btn-outline-success btn-block mb-3" %>
+            <% end %>
+
+            <%= link_to follow_request, method: :delete, class: "btn btn-outline-danger btn-block" do %>
+              Reject follow request
+            <% end %>
+          <% else %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col">
+        <% follow_request = current_user.sent_follow_requests.find_by(recipient: @user) %>
+        <% if follow_request %>
+          <%= link_to follow_request, method: :delete, class: "btn btn-outline-secondary btn-block" do %>
+            <% if follow_request.pending? %>
+              Un-request
+            <% else %>
+              Un-follow
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= render "follow_requests/form", follow_request: @user.received_follow_requests.build %>
+        <% end %>
+      </div>
     </div>
 
     <h3 class="h5">
@@ -76,4 +126,12 @@
     connected_users: user.leaders,
     description: "following",
     target: "#{dom_id(user)}_following"
+%>
+
+<%=
+  render "users/connected_users_modal.html.erb",
+    user: user,
+    connected_users: user.pending,
+    description: "pending",
+    target: "#{dom_id(user)}_pending"
 %>
