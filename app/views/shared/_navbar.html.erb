@@ -1,10 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
   <div class="container">
-    <% if user_signed_in? %>
-      <%= link_to "Photogram", user_path(current_user.username), class: "navbar-brand" %>
-    <% else %>
-      <%= link_to "Photogram", photos_path, class: "navbar-brand" %>
-    <% end %>
+    <%= link_to "Photogram", root_path, class: "navbar-brand" %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,9 +11,9 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to feed_path(current_user.username), class: "nav-link" do %>
-              <i class="fas fa-home fa-fw"></i>
+              <i class="fas fa-users fa-fw"></i></i>
 
-              Home
+              Feed
             <% end %>
           </li>
           <li class="nav-item">
@@ -32,12 +28,26 @@
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to new_photo_path, class: "nav-link" do %>
+              <i class="fas fa-plus-circle"></i>
+
+              Add post
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to user_path(current_user.username), class: "nav-link" do %>
+              <i class="fas fa-home fa-fw"></i>
+
+              Your profile
+            <% end %>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag current_user.avatar_image, class: "rounded-circle", width: 36 %>
+              <%= current_user.username %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to "Edit #{current_user.username}", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>

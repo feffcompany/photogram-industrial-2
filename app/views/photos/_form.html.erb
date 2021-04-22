@@ -11,32 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.text_field :image, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :comments_count %>
-    <%= form.number_field :comments_count %>
-  </div>
-
-  <div class="field">
-    <%= form.label :likes_count %>
-    <%= form.number_field :likes_count %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :caption %>
-    <%= form.text_area :caption %>
+    <%= form.text_area :caption, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :owner_id %>
-    <%= form.text_field :owner_id %>
+    <%= form.text_field :owner_id, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-primary btn-block" %>
   </div>
 <% end %>
